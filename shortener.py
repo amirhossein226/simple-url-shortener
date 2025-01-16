@@ -6,7 +6,7 @@ import sys
 app = Application()
 
 base_url = 'http://localhost:8080/'
-url_list = {}
+url_list = {'ABcd1234': 'https://www.asre-amn.com/'}
 
 # to prevent cercular import I wrote this here
 from .tools import random_key_generator, check_existence

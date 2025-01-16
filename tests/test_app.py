@@ -19,9 +19,10 @@ def test_shortener(Given):
         
         when(verb='')
         assert status == "405 Method Not Allowed"
+        
     with Given(f'/{key_list[0]}'):
         assert status == 301
-        
+            
         when('/sjfsdljfklj')
         assert status == 404
         
