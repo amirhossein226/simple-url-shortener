@@ -1,6 +1,8 @@
 import random
 import string
-from .shortener import url_list
+
+
+url_list = {'ABcd1234': 'https://www.asre-amn.com/'}  
 
 def random_key_generator():
     while True:
@@ -10,8 +12,14 @@ def random_key_generator():
 
 
 def check_existence(*, key=None, old_url=None):
+
     for short_key, url in url_list.items():
         if key == short_key or url == old_url:
-            return key
-
+            return short_key 
     return None
+
+def save_url(key, value):
+    url_list[key] = value
+
+def get_url(key):
+    return url_list.get(key)

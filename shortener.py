@@ -2,14 +2,11 @@
 
 from yhttp.core import Application, text, statuses, guard
 import sys
+import tools
 
 app = Application()
 
 base_url = 'http://localhost:8080/'
-url_list = {'ABcd1234': 'https://www.asre-amn.com/'}
-
-# to prevent cercular import I wrote this here
-from .tools import random_key_generator, check_existence
 
 
 @app.route(r'/url_shortener/?', verb='post')
@@ -25,14 +22,15 @@ def get_short_url(req):
     old_url = form['url']
     
     # None if the old_url not exits on url_list and will return key otherwise
-    key = check_existence(old_url=old_url)
+    key = tools.check_existence(old_url=old_url)
     if key:
         return base_url + key 
     
-    
+     
     print("Generating short url...")
-    random_key = random_key_generator()
-    url_list[random_key] = old_url     
+    random_key = tools.random_key_generator()
+    
+    tools.save_url(random_key, old_url)
 
     return base_url + random_key
 
@@ -40,7 +38,8 @@ def get_short_url(req):
 @app.route(r'/([a-zA-Z0-9]{8})/?', verb='get')
 @text
 def redirect_to_original(req, key):
-    original_url = url_list.get(key)
+    original_url = tools.get_url(key) 
+
     if not original_url:
         raise statuses.notfound()
     
