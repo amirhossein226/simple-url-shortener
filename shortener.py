@@ -2,10 +2,11 @@
 
 from yhttp.core import Application, text, statuses, guard
 import sys
-from . import tools
+from easycli import SubCommand
+
+from tools import * 
 
 app = Application()
-
 base_url = 'http://localhost:8080/'
 
 
@@ -22,15 +23,15 @@ def get_short_url(req):
     old_url = form['url']
     
     # None if the old_url not exits on url_list and will return key otherwise
-    key = tools.check_existence(old_url=old_url)
+    key = check_existence(old_url=old_url)
     if key:
         return base_url + key 
     
      
     print("Generating short url...")
-    random_key = tools.random_key_generator()
+    random_key = random_key_generator()
     
-    tools.save_url(random_key, old_url)
+    save_url(random_key, old_url)
 
     return base_url + random_key
 
@@ -38,7 +39,7 @@ def get_short_url(req):
 @app.route(r'/([a-zA-Z0-9]{8})/?', verb='get')
 @text
 def redirect_to_original(req, key):
-    original_url = tools.get_url(key) 
+    original_url = get_url(key) 
 
     if not original_url:
         raise statuses.notfound()

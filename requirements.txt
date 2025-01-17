@@ -2,3 +2,5 @@ flake8==7.1.1
 pytest==8.3.4
 yhttp==6.3.0
 bddrest==6.1.1
+bddcli==2.9.4
+coverage==7.6.10
