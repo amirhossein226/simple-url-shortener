@@ -1,7 +1,7 @@
 from bddrest import response, when, status, given
 import hashlib
 import re
-from shortener_project.shortener import url_list
+from shortener_project.tools import url_list
 
 def test_shortener(Given):
     base_url = 'http://localhost:8080/'

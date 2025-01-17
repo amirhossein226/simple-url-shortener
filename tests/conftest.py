@@ -1,7 +1,7 @@
 import pytest
 import bddrest
 from functools import partial
-from shortener_project.shortener import app
+from ..shortener import app
 
 
 @pytest.fixture
