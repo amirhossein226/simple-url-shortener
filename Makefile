@@ -23,6 +23,12 @@ prepare:
 activate:
 	@echo "Run source $(VENV_DIR)/bin/activate to activate virtual envitonment"
 
+.PHONY: shortener
+shortener:
+	@echo "Installing shortener..."
+	@$(PYTHON) -m pip install -e .
+	@echo "shortener installed, run 'shortener --help' to see what commands you can use"
+	
 .PHONY: test
 test:
 	@echo "Checking if pytest is installed..."
