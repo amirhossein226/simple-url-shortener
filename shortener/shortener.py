@@ -38,14 +38,14 @@ def get_short_url(req):
     # None if the old_url not exits on url_list and will return key otherwise
     key = check_existence(old_url=old_url)
     if key:
-        return base_url + key
+        return base_url + key + "\n"
 
     print("Generating short url...")
     random_key = random_key_generator()
 
     save_url(random_key, old_url)
 
-    return base_url + random_key
+    return base_url + random_key + "\n"
 
 
 @app.route(r'/([a-zA-Z0-9]{8})/?', verb='get')
@@ -56,8 +56,7 @@ def redirect_to_original(req, key):
     if not original_url:
         raise statuses.notfound()
 
-    raise statuses.status(301, f'You are redirecting to \
-                          {original_url} right now...')
+    raise statuses.movedpermanently(original_url)
 
 
 app.ready()

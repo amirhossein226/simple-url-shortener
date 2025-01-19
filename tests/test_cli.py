@@ -7,14 +7,18 @@ def test_app_cli():
     with Given(cliapp, 'version'):
         assert stderr == ''
         assert status == 0
-        assert stdout == __version__ + '\n'
+        assert stdout.strip() == __version__
 
         when('v')
         assert stderr == ''
         assert status == 0
-        assert stdout == __version__ + '\n'
+        assert stdout.strip() == __version__
 
         when('ver')
         assert stderr == ''
         assert status == 0
-        assert stdout == __version__ + '\n'
+        assert stdout.strip() == __version__
+
+    with Given(cliapp, 'invalidcommand'):
+        assert status != 0
+        assert stderr != ''
