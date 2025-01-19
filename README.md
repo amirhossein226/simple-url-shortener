@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/github/amirhossein226/simple-url-shortener/graph/badge.svg?token=HX5UPD14Y2)](https://codecov.io/github/amirhossein226/simple-url-shortener)
 # Simple Url Shortener Using [Yhttp](https://github.com/yhttp/yhttp.git) Framework
 Follow below steps to run this program on your machine:
 ### Get Project:
