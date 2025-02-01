@@ -41,7 +41,7 @@ If it was not installed, then install it:
 ```
 sudo apt-get install curl
 ```
-Before using `curl`, you must open a new terminal(use `tmux`) and runn below command:
+Before using `curl`, you must open a new terminal(use `tmux`) and run below command:
 ```
 shortener serve
 ```
