@@ -13,13 +13,12 @@ cd simple-url-shortener
 ### Prepare Environment :
 Create the virtual environment using `make` command:
 ```
-make <your_venv_name>
+make venv 
 ```
 And activate your venv:
 ```
-source <your_venv_name>/bin/activate
+source venv/bin/activate
 ```
-> Reaplce `<your_venv_name>` with your intended virtual environment name.
 
 ### Dependencies:
 Install required packages using below command:
